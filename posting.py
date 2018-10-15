@@ -30,11 +30,12 @@ class TistoryPostingBot:
 
         if istag == False:
             driver.switch_to_frame(driver.find_element_by_id("tx_canvas_wysiwyg"))
-            driver.find_element_by_class_name("tx-content-container").send_keys(text)
+            driver.find_element_by_class_name("tx-content-container").send_keys((text))
             driver.switch_to_default_content()
         else:
             driver.find_element_by_id("tx_switchertoggle").click()
-            driver.find_element_by_id("tx_canvas_source").send_keys(text)
+            for t in text:
+                driver.find_element_by_id("tx_canvas_source").send_keys((t))
 
 
         time.sleep(2)

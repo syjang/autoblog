@@ -22,7 +22,7 @@ alltext = []
 #driver.find_element_by_class_name("sch_smit").click()
 
 #i use rank 1 to 10
-for i in range(0,5):
+for i in range(0,3):
     driver.find_element_by_id("nx_query").clear() #clear
     driver.find_element_by_id("nx_query").send_keys(keywordlist[i]) # next keyword
     driver.find_element_by_class_name("bt_search").click() #serach
@@ -40,14 +40,15 @@ for i in range(0,5):
 
 text =""
 for t in alltext:
-    text += str(t)
+    text += str(t) + "<br>"
 
-print(text)
-bot = TistoryPostingBot(driver,"","","")
+#print(text)
+bot = TistoryPostingBot(driver,"http://korea-issues.tistory.com","","")
 
 now = time.localtime()
-s = "%04d-%02d-%02d %02d시 %02d분 인터넷 이슈!" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min)
+s = "%04d-%02d-%02d %02d시인터넷 이슈!" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour,)
 
 if bot.login() :
+    #print(alltext)
     bot.writePost(s,text,True)
 
